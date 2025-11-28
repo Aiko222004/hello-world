@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "db.php";
+include "config.php";
 
 if (isset($_POST['login'])) {
 
@@ -15,12 +15,15 @@ if (isset($_POST['login'])) {
 
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
+        $_SESSION['full_name'] = $user['full_name'];
 
         header("Location: home.php");
         exit();
 
     } else {
-        echo "<script>alert('Invalid username or password'); window.location='login.php';</script>";
+        $_SESSION['error'] = 'Invalid username or password';
+        header("Location: loginform.php");
+        exit();
     }
 }
 ?>
