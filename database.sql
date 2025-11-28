@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(255) NOT NULL,
     email VARCHAR(100),
     full_name VARCHAR(100),
+    role ENUM('user', 'admin', 'developer') DEFAULT 'user',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -19,7 +20,7 @@ CREATE TABLE IF NOT EXISTS tickets (
     user_id INT NOT NULL,
     title VARCHAR(200) NOT NULL,
     description TEXT NOT NULL,
-    status ENUM('Open', 'In Progress', 'Resolved', 'Closed') DEFAULT 'Open',
+    status ENUM('Open', 'In Progress', 'Closed', 'Completed') DEFAULT 'Open',
     priority ENUM('Low', 'Medium', 'High', 'Urgent') DEFAULT 'Medium',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -27,5 +28,11 @@ CREATE TABLE IF NOT EXISTS tickets (
 );
 
 -- Insert sample user (username: admin, password: admin123)
-INSERT INTO users (username, password, email, full_name) VALUES 
-('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin@example.com', 'Admin User');
+INSERT INTO users (username, password, email, full_name, role) VALUES 
+('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin@example.com', 'Admin User', 'admin');
+
+-- Add role column to existing users table (run this if upgrading existing database)
+-- ALTER TABLE users ADD COLUMN role ENUM('user', 'admin', 'developer') DEFAULT 'user' AFTER full_name;
+
+-- Update existing admin user to have admin role (run this if upgrading existing database)
+-- UPDATE users SET role = 'admin' WHERE username = 'admin';

@@ -124,6 +124,10 @@ if (!isset($_SESSION['user_id'])) {
             border-left-color: #764ba2;
         }
         
+        .card.admin {
+            border-left-color: #f57c00;
+        }
+        
         .icon {
             font-size: 40px;
             margin-bottom: 15px;
@@ -157,6 +161,14 @@ if (!isset($_SESSION['user_id'])) {
                 <h3>Ticket History</h3>
                 <p>View all your submitted tickets, check their status, and track progress on your support requests.</p>
             </a>
+            
+            <?php if(isset($_SESSION['role']) && ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'developer')): ?>
+            <a href="admin_tickets.php" class="card admin">
+                <div class="icon">⚙️</div>
+                <h3>Admin Panel</h3>
+                <p>View all customer tickets and update their status. Manage support requests from all users.</p>
+            </a>
+            <?php endif; ?>
         </div>
     </div>
 </body>
