@@ -300,6 +300,7 @@ $stats = $stats_query->fetch(PDO::FETCH_ASSOC);
         <div class="nav-links">
             <span class="role-badge"><?php echo strtoupper($_SESSION['role']); ?></span>
             <a href="home.php">Dashboard</a>
+            <a href="admin_manage_users.php">Manage Users</a>
             <a href="ticket_history.php">My Tickets</a>
             <a href="logout.php">Logout</a>
         </div>
