@@ -142,7 +142,7 @@
     <div class="login-container">
         <div class="accent-bar"></div>
         <h2>🎫 Ticketing System</h2>
-        <h2>MAMAMO H2</h2>
+        <h2>try merge conflict</h2>
         
         <?php if(isset($_SESSION['success'])): ?>
             <div class="success-message">
