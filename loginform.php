@@ -88,11 +88,46 @@
             margin-bottom: 20px;
             text-align: center;
         }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .signup-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>🎫 Ticketing System</h2>
+        
+        <?php if(isset($_SESSION['success'])): ?>
+            <div class="success-message">
+                <?php 
+                    echo $_SESSION['success']; 
+                    unset($_SESSION['success']);
+                ?>
+            </div>
+        <?php endif; ?>
         
         <?php if(isset($_SESSION['error'])): ?>
             <div class="error-message">
@@ -116,6 +151,10 @@
             
             <button type="submit" name="login" class="btn-login">Login</button>
         </form>
+        
+        <div class="signup-link">
+            Don't have an account? <a href="signup.php">Sign up here</a>
+        </div>
     </div>
 </body>
 </html>
