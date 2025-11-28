@@ -142,6 +142,7 @@
     <div class="login-container">
         <div class="accent-bar"></div>
         <h2>🎫 Ticketing System</h2>
+        <h2> Testing Merge Error </h2>
         
         <?php if(isset($_SESSION['success'])): ?>
             <div class="success-message">
