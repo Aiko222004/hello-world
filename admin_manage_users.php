@@ -8,6 +8,8 @@ if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['admin','develope
     $_SESSION['error'] = 'Access denied. Admin or Developer privileges required.'; header("Location: home.php"); exit();
 }
 
+//HAHAHAHAHAHAHA MAMAMO MAMAKO MAMIJUNISIA
+
 $success = null; $errors = [];
 
 // Create or update user
